@@ -102,11 +102,9 @@ while True:
         # Enciende el RGB si la comparacion BOOLEANA da TRUE (cuando nivel es menor a umbral) 
         aplicar(nivel < umbral)
     # Si el modo es manual
-    elif modo == "manual": 
-        # Se enciende
+    elif modo == "on": 
         aplicar(True)
-    else:
-        # Se apaga
+    else: # Utilizo el modo off o cualquier otra palabra para apagar el led
         aplicar(False)
     # Cada 200 ms vuelve a hacer el bucle while 
     time.sleep_ms(200)
