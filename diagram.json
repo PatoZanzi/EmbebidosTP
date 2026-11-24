@@ -23,13 +23,13 @@
   "connections": [
     [ "esp:TX", "$serialMonitor:RX", "", [] ],
     [ "esp:RX", "$serialMonitor:TX", "", [] ],
-    [ "rgb1:COM", "esp:CMD", "green", [ "v0" ] ],
     [ "rgb1:R", "esp:25", "green", [ "v0" ] ],
     [ "rgb1:G", "esp:26", "green", [ "v0" ] ],
     [ "rgb1:B", "esp:27", "green", [ "v0" ] ],
     [ "ldr1:VCC", "esp:3V3", "red", [ "v9.6", "h-67.2", "v-192", "h-153.6" ] ],
     [ "esp:34", "ldr1:AO", "green", [ "h-19.05", "v-67.2", "h182.4", "v172.8" ] ],
-    [ "ldr1:GND", "esp:GND.2", "black", [ "v19.2", "h-66.8", "v-163.2" ] ]
+    [ "ldr1:GND", "esp:GND.2", "black", [ "v19.2", "h-66.8", "v-163.2" ] ],
+    [ "esp:GND.1", "rgb1:COM", "black", [ "h0" ] ]
   ],
   "dependencies": {}
 }
