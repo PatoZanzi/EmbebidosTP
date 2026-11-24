@@ -36,17 +36,22 @@ def leer_nivel():
 
 def on_msg(topic, msg):
     global umbral, brillo, color, modo
-    t = topic.decode() 
-    m = msg.decode()
-    if t.endswith("umbral"): 
-        umbral = int(m)
-    elif t.endswith("brillo"): 
-        brillo = int(m)
-    elif t.endswith("color"):
-        h = m.lstrip("#")
-        color = tuple(int(h[i:i+2], 16) for i in (0, 2, 4))
-    elif t.endswith("modo"): 
-        modo = m
+    try:
+        t = topic.decode() 
+        m = msg.decode().strip()
+        if t.endswith("umbral"): 
+            umbral = max(0, min(100, int(m)))
+        elif t.endswith("brillo"): 
+            brillo = max(0, min(100, int(m)))
+        elif t.endswith("color"):
+            h = m.lstrip("#")
+            if len(h) != 6:
+                raise ValueError("color invalido")
+            color = tuple(int(h[i:i+2], 16) for i in (0, 2, 4))
+        elif t.endswith("modo"): 
+            modo = m
+    except ValueError:
+        print("Mensaje invalido en", topic, ":", msg)
 
 def conectar_mqtt():
     cliente = MQTTClient(
