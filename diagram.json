@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "author": "Anonymous maker",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 81.64, "attrs": {} },
+    {
+      "type": "wokwi-rgb-led",
+      "id": "rgb1",
+      "top": 13.6,
+      "left": -46.9,
+      "attrs": { "common": "cathode" }
+    },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldr1",
+      "top": 57.3,
+      "left": 205.7,
+      "rotate": 90,
+      "attrs": {}
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "rgb1:COM", "esp:CMD", "green", [ "v0" ] ],
+    [ "rgb1:R", "esp:25", "green", [ "v0" ] ],
+    [ "rgb1:G", "esp:26", "green", [ "v0" ] ],
+    [ "rgb1:B", "esp:27", "green", [ "v0" ] ],
+    [ "ldr1:VCC", "esp:3V3", "red", [ "v9.6", "h-67.2", "v-192", "h-153.6" ] ],
+    [ "esp:34", "ldr1:AO", "green", [ "h-19.05", "v-67.2", "h182.4", "v172.8" ] ],
+    [ "ldr1:GND", "esp:GND.2", "black", [ "v19.2", "h-66.8", "v-163.2" ] ]
+  ],
+  "dependencies": {}
+}
